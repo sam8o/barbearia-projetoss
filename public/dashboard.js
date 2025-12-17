@@ -1,8 +1,5 @@
-// Arquivo: dashboard.js
 document.addEventListener('DOMContentLoaded', () => {
     const listContainer = document.getElementById('agendamentos-list');
-
-    // URL do backend no Render
     const API_URL = 'https://barbearia-backend-1s5u.onrender.com';
 
     async function fetchAgendamentos() {
@@ -10,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
             listContainer.innerHTML = `<p class="loading-message">Carregando agendamentos...</p>`;
 
             const response = await fetch(`${API_URL}/api/agendamentos`);
-            if (!response.ok) throw new Error('Erro ao buscar dados');
+            if (!response.ok) throw new Error('Erro ao buscar');
 
             const agendamentos = await response.json();
             renderAgendamentos(agendamentos);
@@ -19,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error(error);
             listContainer.innerHTML = `
                 <p class="loading-message" style="color:red;">
-                    Erro ao carregar agendamentos. Tente recarregar.
+                    Erro ao carregar agendamentos. Tente recarregar a página.
                 </p>`;
         }
     }
@@ -37,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
             card.classList.add('agendamento-card-item');
 
             const dataFormatada = new Date(
-                ag.date + 'T' + ag.time
+                `${ag.date}T${ag.time}:00`
             ).toLocaleDateString('pt-BR');
 
             card.innerHTML = `
