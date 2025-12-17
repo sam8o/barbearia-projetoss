@@ -2,33 +2,29 @@
 document.addEventListener('DOMContentLoaded', () => {
     const listContainer = document.getElementById('agendamentos-list');
 
-    // URL BASE DO BACKEND (Render)
+    // URL do backend no Render
     const API_URL = 'https://barbearia-backend-1s5u.onrender.com';
 
-    // Função para buscar agendamentos do backend
-    const fetchAgendamentos = async () => {
+    async function fetchAgendamentos() {
         try {
             listContainer.innerHTML = `<p class="loading-message">Carregando agendamentos...</p>`;
 
             const response = await fetch(`${API_URL}/api/agendamentos`);
-            if (!response.ok) {
-                throw new Error('Erro ao buscar dados do servidor.');
-            }
+            if (!response.ok) throw new Error('Erro ao buscar dados');
 
             const agendamentos = await response.json();
             renderAgendamentos(agendamentos);
 
         } catch (error) {
-            console.error('Erro ao buscar agendamentos:', error);
+            console.error(error);
             listContainer.innerHTML = `
-                <p class="loading-message" style="color: #dc3545;">
-                    Erro ao carregar agendamentos. Tente recarregar a página.
+                <p class="loading-message" style="color:red;">
+                    Erro ao carregar agendamentos. Tente recarregar.
                 </p>`;
         }
-    };
+    }
 
-    // Função para renderizar os agendamentos na página
-    const renderAgendamentos = (agendamentos) => {
+    function renderAgendamentos(agendamentos) {
         listContainer.innerHTML = '';
 
         if (!agendamentos || agendamentos.length === 0) {
@@ -36,58 +32,31 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        agendamentos.forEach(agendamento => {
+        agendamentos.forEach(ag => {
             const card = document.createElement('div');
             card.classList.add('agendamento-card-item');
 
-            const agendamentoDate = new Date(
-                agendamento.date + 'T' + agendamento.time + ':00'
-            );
-
-            const dataFormatada = agendamentoDate.toLocaleDateString('pt-BR');
-            const horaFormatada = agendamento.time;
+            const dataFormatada = new Date(
+                ag.date + 'T' + ag.time
+            ).toLocaleDateString('pt-BR');
 
             card.innerHTML = `
                 <h3>
-                    ${agendamento.name}
-                    <span class="status-badge status-${agendamento.status}">
-                        ${agendamento.status}
+                    ${ag.name}
+                    <span class="status-badge status-${ag.status}">
+                        ${ag.status}
                     </span>
                 </h3>
 
-                <div class="info-item">
-                    <span class="label">Serviço:</span>
-                    <span class="value">${agendamento.service.toUpperCase()}</span>
-                </div>
+                <p><strong>Serviço:</strong> ${ag.service}</p>
+                <p><strong>Data:</strong> ${dataFormatada} às ${ag.time}</p>
+                <p><strong>Telefone:</strong> ${ag.phone}</p>
+                <p><strong>Obs:</strong> ${ag.notes || 'Nenhuma'}</p>
 
-                <div class="info-item">
-                    <span class="label">Data/Hora:</span>
-                    <span class="value">${dataFormatada} às ${horaFormatada}</span>
-                </div>
-
-                <div class="info-item">
-                    <span class="label">Telefone:</span>
-                    <span class="value">${agendamento.phone}</span>
-                </div>
-
-                <div class="info-item">
-                    <span class="label">Observação:</span>
-                    <span class="value">${agendamento.notes || 'Nenhuma'}</span>
-                </div>
-
-                ${agendamento.status === 'Pendente' ? `
+                ${ag.status === 'Pendente' ? `
                     <div class="card-actions">
-                        <button class="action-btn confirm-btn"
-                            data-id="${agendamento.id}"
-                            data-status="Confirmado">
-                            Confirmar
-                        </button>
-
-                        <button class="action-btn cancel-btn"
-                            data-id="${agendamento.id}"
-                            data-status="Cancelado">
-                            Cancelar
-                        </button>
+                        <button data-id="${ag.id}" data-status="Confirmado">Confirmar</button>
+                        <button data-id="${ag.id}" data-status="Cancelado">Cancelar</button>
                     </div>
                 ` : ''}
             `;
@@ -95,36 +64,24 @@ document.addEventListener('DOMContentLoaded', () => {
             listContainer.appendChild(card);
         });
 
-        // Eventos dos botões
-        document.querySelectorAll('.action-btn').forEach(btn => {
-            btn.addEventListener('click', handleStatusUpdate);
-        });
-    };
+        document.querySelectorAll('.card-actions button')
+            .forEach(btn => btn.addEventListener('click', updateStatus));
+    }
 
-    // Atualizar status do agendamento
-    const handleStatusUpdate = async (e) => {
+    async function updateStatus(e) {
         const id = e.target.dataset.id;
         const status = e.target.dataset.status;
 
-        if (!confirm(`Deseja alterar o status para "${status}"?`)) return;
+        if (!confirm(`Alterar status para ${status}?`)) return;
 
-        try {
-            await fetch(`${API_URL}/api/agendamentos/${id}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ status })
-            });
+        await fetch(`${API_URL}/api/agendamentos/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ status })
+        });
 
-            fetchAgendamentos();
+        fetchAgendamentos();
+    }
 
-        } catch (error) {
-            console.error('Erro ao atualizar status:', error);
-            alert('Erro ao atualizar o status.');
-        }
-    };
-
-    // Inicializa
     fetchAgendamentos();
 });
