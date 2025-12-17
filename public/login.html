@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Barberia dos Amigos</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- LADO ESQUERDO - FORMULÁRIO -->
+    <div class="left-box">
+
+        <div class="branding">
+            <p class="small-title">Bem-Vindo (a)</p>
+            <h1 class="logo">BARBEARIA DOS AMIGOS</h1>
+            <div class="divider"></div>
+            <p class="subtitle">Keven & Jhonathan</p>
+        </div>
+
+        <h2 class="login-title">Faça seu login</h2>
+
+        <div class="input-group">
+            <i class="fas fa-envelope"></i>
+            <input id="usuario" type="text" placeholder="E-mail">
+        </div>
+
+        <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input id="senha" type="password" placeholder="Senha">
+        </div>
+
+        <button class="login-btn" onclick="logar()">Entrar</button>
+
+        <a href="#" class="forgot">Esqueci minha senha</a>
+
+        
+
+        <p class="error" id="erro"></p>
+    </div>
+
+    <!-- LADO DIREITO - IMAGEM -->
+    <div class="right-box"></div>
+
+</div>
+
+<script src="login.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Barberia dos Amigos</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+    <main class="dashboard-container">
+        <div class="dashboard-header">
+            <h1 class="gold-text">💈 Painel de Agendamentos</h1>
+            <p class="subtitle">Gerencie os pedidos de clientes em tempo real.</p>
+        </div>
+
+        <section id="agendamentos-list" class="agendamentos-list-grid">
+            <p id="loading-message" class="loading-message">Carregando agendamentos...</p>
+        </section>
+        
+    </main>
+
+ <script>
+if (localStorage.getItem("logado") !== "true") {
+    window.location.href = "/login.html";
+}
+</script>
+
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

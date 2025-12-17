@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Localização - Barberia dos Amigos</title>
+    <link rel="stylesheet" href="style.css"> 
+    <style>
+        /* CSS específico para o Mapa */
+        .map-container {
+            min-height: 80vh;
+            background-color: var(--color-dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 20px;
+        }
+        .map-container h1 {
+            margin-bottom: 10px;
+        }
+        .map-frame {
+            width: 100%;
+            max-width: 1200px;
+            height: 500px; /* Altura do mapa */
+            border: 3px solid var(--color-gold);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <main class="map-container">
+        <h1 class="gold-text">Onde nos Encontrar</h1>
+        <p class="subtitle" style="color: var(--color-gray);">Traga seu estilo para nossa casa. Estamos esperando por você.</p>
+
+        <div class="map-frame">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.41243542261!2d-46.63595678440748!3d-23.550519184687556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c869e8b79b%3A0x6333c1f6b8a8b8b8!2sBarbearia%20Exemplo!5e0!3m2!1spt-BR!2sbr!4v1678888888888!2m3!1f0!2f0!3f0" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+        
+        <a href="index.html" class="cta-button secondary-cta" style="margin-top: 40px;">Voltar para Home</a>
+    </main>
+
+</body>
+</html>

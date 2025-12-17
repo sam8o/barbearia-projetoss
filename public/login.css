@@ -1,0 +1,149 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #121212;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    height: 90vh;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #36363c;
+}
+
+/* LADO ESQUERDO */
+.left-box {
+    background: #36363c;
+    padding: 60px 45px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.branding .small-title {
+    color: #b3b3b3;
+    font-size: 0.9em;
+}
+
+.logo {
+    font-size: 2.3em;
+    margin: 5px 0;
+    letter-spacing: 2px;
+}
+
+.divider {
+    width: 50px;
+    height: 3px;
+    background: #ff9000;
+    margin: 10px 0;
+}
+
+.subtitle {
+    color: #bfbfbf;
+    font-size: 0.9em;
+}
+
+.login-title {
+    margin-top: 50px;
+    font-size: 1.4em;
+}
+
+/* INPUTS */
+.input-group {
+    margin-top: 25px;
+    position: relative;
+}
+
+.input-group i {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    color: #666;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 12px 12px 25px;
+    background: #232129;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    color: #fff;
+    font-size: 1em;
+}
+
+.input-group input::placeholder {
+    color: #777;
+}
+
+/* BOTÃO */
+.login-btn {
+    background: #ff9000;
+    width: 109%;
+    padding: 10px;
+    margin-top: 20px;
+    border: none;
+    font-weight: bold;
+    color: #1a1a1a;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+}
+
+.login-btn:hover {
+    background: #e68100;
+}
+
+/* LINKS */
+.forgot {
+    margin-top: 15px;
+    text-align: center;
+    display: block;
+    color: #ddd;
+    font-size: 0.9em;
+}
+
+.create-account {
+    margin-top: 40px;
+    text-align: center;
+    color: #ff9000;
+    font-weight: bold;
+    font-size: 0.95em;
+    text-decoration: none;
+}
+
+.create-account i {
+    margin-left: 5px;
+}
+
+/* ERRO */
+.error {
+    margin-top: 20px;
+    text-align: center;
+    color: red;
+}
+
+/* LADO DIREITO - IMAGEM */
+.right-box {
+    background: url('imgs/imagem-login.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(100%);
+}
+
+/* RESPONSIVO */
+@media (max-width: 850px) {
+    .container {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+    .right-box {
+        height: 300px;
+    }
+}

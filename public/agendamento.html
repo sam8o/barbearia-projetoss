@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento - Barberia dos Amigos</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="agendamento.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <main class="agendamento-container">
+        <div class="agendamento-card fade-in show">
+            <h1 class="gold-text">Agende seu Horário</h1>
+            <p class="subtitle">Selecione o serviço e escolha o melhor momento para o seu ritual.</p>
+
+            <form id="schedule-form">
+                
+                <div class="form-group">
+                    <label for="name"><i class="fas fa-user-circle gold-text"></i> Nome Completo:</label>
+                    <input type="text" id="name" name="name" required placeholder="Seu nome">
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone"><i class="fas fa-phone gold-text"></i> Telefone:</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="(99) 99999-9999">
+                </div>
+                
+                <div class="form-group">
+                    <label for="service"><i class="fas fa-scissors gold-text"></i> Escolha o Serviço:</label>
+                    <select id="service" name="service" required>
+                        <option value="">-- Selecione um Serviço --</option>
+                        <option value="corte">Corte de Cabelo (R$ 60,00)</option>
+                        <option value="barba">Design de Barba (R$ 45,00)</option>
+                        <option value="combo">Corte + Barba (R$ 100,00)</option>
+                        <option value="premium">Corte Premium + Lavagem (R$ 75,00)</option>
+                    </select>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group half-width">
+                        <label for="date"><i class="fas fa-calendar-alt gold-text"></i> Data:</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                    <div class="form-group half-width">
+                        <label for="time"><i class="fas fa-clock gold-text"></i> Horário:</label>
+                        <input type="time" id="time" name="time" required min="09:00" max="19:00" step="900">
+                        <small class="info-text">Horário disponível: 9h até 19h</small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="notes"><i class="fas fa-comment-dots gold-text"></i> Observação (Opcional):</label>
+                    <textarea id="notes" name="notes" rows="3" placeholder="Restrições, preferências ou pedidos especiais..."></textarea>
+                </div>
+
+                <button type="submit" class="cta-button">Confirmar Agendamento</button>
+            </form>
+
+            <div id="success-message" class="success-box hidden">
+                <i class="fas fa-check-circle success-icon"></i>
+                <h2>Agendamento Confirmado!</h2>
+                <p>Obrigado! Seu horário foi reservado com sucesso. Você receberá uma confirmação por telefone.</p>
+                <a href="index.html" class="cta-button secondary-cta">Voltar para Home</a>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="agendamento.js"></script>
+</body>
+</html>

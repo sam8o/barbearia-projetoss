@@ -1,0 +1,135 @@
+/* CONTAINER E FUNDO DA PÁGINA (GARANTE O TEMA ESCURO) */
+.agendamento-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: var(--color-dark, #121212); 
+    /* Adiciona uma transição suave ao fundo caso ele mude */
+    transition: background-color 0.5s ease;
+}
+
+/* CARD PRINCIPAL DO FORMULÁRIO (EFEITO DE ELEVAÇÃO) */
+.agendamento-card {
+    background-color: #1a1a1a;
+    padding: 40px;
+    border-radius: 10px;
+    /* Sombra mais elegante e profunda */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6); 
+    max-width: 600px; /* Aumentei um pouco a largura para melhor visual */
+    width: 100%;
+    text-align: center;
+    color: var(--color-light, #f4f4f4);
+}
+
+.agendamento-card h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    font-weight: 900;
+}
+
+.agendamento-card .subtitle {
+    color: var(--color-gray);
+    margin-bottom: 30px;
+}
+
+/* GRUPO DE FORMULÁRIO */
+.form-group {
+    text-align: left;
+    margin-bottom: 25px; /* Aumenta o espaçamento entre os campos */
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--color-light, #f4f4f4);
+    font-size: 1.05em;
+    letter-spacing: 0.5px;
+}
+
+.form-group label i {
+    margin-right: 10px;
+    /* Destaque dourado nos ícones */
+    color: var(--color-gold, #ffc107); 
+}
+
+/* INPUTS, SELECTS E TEXTAREA: ONDE O ESTILO FAZ A DIFERENÇA */
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 14px; /* Aumenta o padding para campos maiores e mais fáceis de tocar */
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #252525; /* Fundo do campo sutilmente mais claro que o card */
+    color: var(--color-light, #f4f4f4);
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    /* Efeito de foco elegante com borda dourada e sombra */
+    border-color: var(--color-gold, #ffc107);
+    box-shadow: 0 0 8px rgba(255, 193, 7, 0.4);
+    outline: none;
+    background-color: #2a2a2a; /* Levemente mais escuro ao focar */
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* LAYOUT DE DUAS COLUNAS */
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.half-width {
+    flex: 1;
+}
+
+/* MENSAGEM DE SUCESSO */
+.success-box {
+    margin-top: 40px;
+    padding: 30px;
+    border: 3px solid var(--color-gold);
+    border-radius: 8px;
+    text-align: center;
+    background-color: #1f1f1f;
+    box-shadow: 0 0 15px rgba(255, 193, 7, 0.3);
+}
+
+.success-icon {
+    font-size: 3.5em;
+    color: var(--color-gold);
+}
+
+.success-box h2 {
+    font-size: 2em;
+    margin-bottom: 15px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 650px) {
+    .agendamento-card {
+        padding: 25px 20px;
+    }
+    .agendamento-card h1 {
+        font-size: 2em;
+    }
+    .form-row {
+        flex-direction: column; 
+        gap: 0;
+    }
+}
